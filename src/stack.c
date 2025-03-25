@@ -24,12 +24,32 @@ int stack_push(Stack *stack, void *value)
     return 1;
 }
 
+int stack_push_int(Stack *stack, const int value)
+{
+    int *ptr = (int*) malloc(sizeof(int));
+    *ptr = value;
+
+    return stack_push(stack, ptr);
+}
+
 void *stack_pop(Stack *stack)
 {
     if(stack->top < 0)
         return NULL;
 
     return stack->array[stack->top--];
+}
+
+int stack_pop_int(Stack *stack)
+{
+    int *ptr = (int*) stack_pop(stack);
+    
+    if(!ptr)
+        return 0;
+        
+    int value = *ptr;
+    free(ptr);
+    return value;
 }
 
 void stack_finalize(Stack *stack)
