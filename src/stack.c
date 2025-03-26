@@ -32,6 +32,14 @@ int stack_push_int(Stack *stack, const int value)
     return stack_push(stack, ptr);
 }
 
+int stack_push_char(Stack *stack, const char value)
+{
+    char *ptr = (char*) malloc(sizeof(char));
+    *ptr = value;
+
+    return stack_push(stack, ptr);
+}
+
 void *stack_pop(Stack *stack)
 {
     if(stack->top < 0)
@@ -46,8 +54,20 @@ int stack_pop_int(Stack *stack)
     
     if(!ptr)
         return 0;
-        
+
     int value = *ptr;
+    free(ptr);
+    return value;
+}
+
+char stack_pop_char(Stack *stack)
+{
+    char *ptr = (char*) stack_pop(stack);
+    
+    if(!ptr)
+        return '\0';
+
+    char value = *ptr;
     free(ptr);
     return value;
 }
