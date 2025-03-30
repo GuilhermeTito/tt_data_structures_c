@@ -7,11 +7,13 @@ int main(void)
     Stack stack_char;
     Stack stack_float;
     Stack stack_double;
+    Stack stack_str;
     
     stack_initialize(&stack_int, 10);
     stack_initialize(&stack_char, 10);
     stack_initialize(&stack_float, 10);
     stack_initialize(&stack_double, 10);
+    stack_initialize(&stack_str, 10);
     
     stack_push_int(&stack_int, 3);
     stack_push_int(&stack_int, -23);
@@ -24,6 +26,9 @@ int main(void)
 
     stack_push_double(&stack_double, 99.99);
     stack_push_double(&stack_double, 17.2);
+
+    stack_push_str(&stack_str, "World");
+    stack_push_str(&stack_str, "Hello");
 
     printf("Stack (int):\n");
     printf("%d\n", stack_pop_int(&stack_int));
@@ -41,10 +46,15 @@ int main(void)
     printf("%f\n", stack_pop_double(&stack_double));
     printf("%f\n", stack_pop_double(&stack_double));
 
+    printf("Stack (string):\n");
+    printf("%s\n", stack_pop_str(&stack_str));
+    printf("%s\n", stack_pop_str(&stack_str));
+
     stack_finalize(&stack_int);
     stack_finalize(&stack_char);
     stack_finalize(&stack_float);
     stack_finalize(&stack_double);
+    stack_finalize(&stack_str);
     
     return 0;
 }
