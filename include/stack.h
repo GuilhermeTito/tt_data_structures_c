@@ -16,11 +16,19 @@ int stack_push_int(Stack *stack, const int value);
 
 int stack_push_char(Stack *stack, const char value);
 
+int stack_push_float(Stack *stack, const float value);
+
+int stack_push_double(Stack *stack, const double value);
+
 void *stack_pop(Stack *stack);
 
 int stack_pop_int(Stack *stack);
 
 char stack_pop_char(Stack *stack);
+
+float stack_pop_float(Stack *stack);
+
+double stack_pop_double(Stack *stack);
 
 void stack_finalize(Stack *stack);
 

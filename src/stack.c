@@ -40,6 +40,22 @@ int stack_push_char(Stack *stack, const char value)
     return stack_push(stack, ptr);
 }
 
+int stack_push_float(Stack *stack, const float value)
+{
+    float *ptr = (float*) malloc(sizeof(float));
+    *ptr = value;
+
+    return stack_push(stack, ptr);
+}
+
+int stack_push_double(Stack *stack, const double value)
+{
+    double *ptr = (double*) malloc(sizeof(double));
+    *ptr = value;
+
+    return stack_push(stack, ptr);
+}
+
 void *stack_pop(Stack *stack)
 {
     if(stack->top < 0)
@@ -68,6 +84,30 @@ char stack_pop_char(Stack *stack)
         return '\0';
 
     char value = *ptr;
+    free(ptr);
+    return value;
+}
+
+float stack_pop_float(Stack *stack)
+{
+    float *ptr = (float*) stack_pop(stack);
+
+    if(!ptr)
+        return 0.0f;
+
+    float value = *ptr;
+    free(ptr);
+    return value;
+}
+
+double stack_pop_double(Stack *stack)
+{
+    double *ptr = (double*) stack_pop(stack);
+
+    if(!ptr)
+        return 0.0;
+
+    double value = *ptr;
     free(ptr);
     return value;
 }
