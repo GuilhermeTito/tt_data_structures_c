@@ -1,4 +1,4 @@
-#include "include/stack.h"
+#include "stack.h"
 #include <stdlib.h>
 
 int stack_initialize(Stack *stack, int size)
@@ -10,6 +10,32 @@ int stack_initialize(Stack *stack, int size)
 
     stack->top = -1;
     stack->size = size;
+
+    return 1;
+}
+
+int stack_resize(Stack *stack, unsigned int new_size)
+{
+    void **new_array = malloc(new_size * sizeof(void*));
+
+    if(!new_array)
+        return 0;
+    
+    for(unsigned int i = 0; i <= stack->top && i < new_size; i++)
+    {
+        new_array[i] = stack->array[i];
+        stack->array[i] = NULL;
+    }
+
+    free(stack->array);
+
+    stack->array = new_array;
+    new_array = NULL;
+
+    stack->size = new_size;
+
+    if(stack->top >= new_size)
+        stack->top = new_size - 1;
 
     return 1;
 }

@@ -10,6 +10,8 @@ typedef struct Stack
 
 int stack_initialize(Stack *stack, int size);
 
+int stack_resize(Stack *stack, unsigned int new_size);
+
 int stack_push(Stack *stack, void *value);
 
 int stack_push_int(Stack *stack, const int value);
