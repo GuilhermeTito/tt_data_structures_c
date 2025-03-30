@@ -8,7 +8,7 @@ typedef struct Stack
     int size;
 } Stack;
 
-int stack_initialize(Stack *stack, int size);
+int stack_initialize(Stack *stack, unsigned int size);
 
 int stack_resize(Stack *stack, unsigned int new_size);
 
