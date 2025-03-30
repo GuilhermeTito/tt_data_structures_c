@@ -43,7 +43,8 @@ int stack_resize(Stack *stack, unsigned int new_size)
 int stack_push(Stack *stack, void *value)
 {
     if(stack->top >= stack->size - 1)
-        return 0;
+        if(!stack_resize(stack, stack->size * 2))
+            return 0;
 
     stack->array[++stack->top] = value;
 
