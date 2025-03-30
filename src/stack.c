@@ -1,4 +1,4 @@
-#include "stack.h"
+#include "include/stack.h"
 #include <stdlib.h>
 
 int stack_initialize(Stack *stack, int size)
