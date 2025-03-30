@@ -20,6 +20,8 @@ int stack_push_float(Stack *stack, const float value);
 
 int stack_push_double(Stack *stack, const double value);
 
+int stack_push_str(Stack *stack, char *value);
+
 void *stack_pop(Stack *stack);
 
 int stack_pop_int(Stack *stack);
@@ -29,6 +31,8 @@ char stack_pop_char(Stack *stack);
 float stack_pop_float(Stack *stack);
 
 double stack_pop_double(Stack *stack);
+
+char *stack_pop_str(Stack *stack);
 
 void stack_finalize(Stack *stack);
 

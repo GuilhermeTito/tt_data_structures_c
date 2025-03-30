@@ -56,6 +56,11 @@ int stack_push_double(Stack *stack, const double value)
     return stack_push(stack, ptr);
 }
 
+int stack_push_str(Stack *stack, char *value)
+{
+    return stack_push(stack, value);
+}
+
 void *stack_pop(Stack *stack)
 {
     if(stack->top < 0)
@@ -110,6 +115,11 @@ double stack_pop_double(Stack *stack)
     double value = *ptr;
     free(ptr);
     return value;
+}
+
+char *stack_pop_str(Stack *stack)
+{
+    return (char*) stack_pop(stack);
 }
 
 void stack_finalize(Stack *stack)
