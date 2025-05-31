@@ -1,8 +1,11 @@
 #include "stack.h"
 #include <stdlib.h>
 
-int stack_initialize(Stack *stack, unsigned int size)
+int stack_initialize(Stack *stack, int size)
 {
+    if(size <= 0)
+        return 0;
+
     stack->array = malloc(size * sizeof(void*));
 
     if(!stack->array)
@@ -14,8 +17,11 @@ int stack_initialize(Stack *stack, unsigned int size)
     return 1;
 }
 
-int stack_resize(Stack *stack, unsigned int new_size)
+int stack_resize(Stack *stack, int new_size)
 {
+    if(new_size <= 0)
+        return 0;
+    
     void **new_array = malloc(new_size * sizeof(void*));
 
     if(!new_array)
