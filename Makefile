@@ -25,7 +25,7 @@ $(LIB_FILE):$(OBJ)
 	$(CC) $(LDFLAGS) -o $(LIB_FILE) $(OBJ)
 
 $(BUILD_DIR)/%.o:$(SRC_DIR)/%.c
-	mkdir $(BUILD_DIR)
+	@[ -d $(BUILD_DIR) ] || mkdir -p $(BUILD_DIR)
 	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -c $< -o $@
 
 clean:
