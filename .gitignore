@@ -52,10 +52,10 @@ Mkfile.old
 dkms.conf
 
 #CMake
-CMakeFiles/
-*.cmake
-CMakeCache.txt
-Makefile
+#CMakeFiles/
+#*.cmake
+#CMakeCache.txt
+#Makefile
 
 #Output directory
 build/
