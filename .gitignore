@@ -58,7 +58,7 @@ CMakeCache.txt
 Makefile
 
 #Output directory
-bin/
+build/
 
 #Visual Studio Code
 .vscode/
